@@ -5,17 +5,26 @@ let timerInterval = null;
 let elapsedTime = null;
 let isTyping = false;
 
+let totalTypos = 0;
+
 input.addEventListener("keydown", (event) => {
     // Check if the user presses space, at which point we assume they have typed a word
     if (event.key == " ") {
-        verifyWordTyped(input.value)
+        const actualWordElement = document.getElementsByClassName("untyped")[0];
+        const actualWord = actualWordElement.innerHTML;
+
+        // If actualWordElement is null, then there are no more words to type
+        if (actualWordElement === null) {
+            clearInterval(timerInterval);
+        }
+
+        verifyWordTyped(input.value, actualWord);
         // Clear the input field
         if (input.value != "") {
-            input.value = ""
+            input.value = "";
         }
     }
-})
-
+});
 
 input.addEventListener("input", () => {
     // If the user has not started typing
@@ -30,19 +39,17 @@ input.addEventListener("input", () => {
         }, 1000);
         isTyping = true;
     } else {
-        console.log(elapsedTime)
+        console.log(elapsedTime);
     }
 });
 
+function verifyWordTyped(typedWord, actualWord) {
+    let numOfTypos = Math.abs(typedWord.trim().localCompare(actualWord));
 
-function verifyWordTyped(typedWord) {
-    const actualWordElement = document.getElementsByClassName("untyped")[0]
-    const actualWord = actualWordElement.innerHTML
-
-    if (typedWord.trim() === actualWord) {
-        actualWordElement.className = "typed-correct"
+    if (numOfTypos === 0) {
+        actualWordElement.className = "typed-correct";
+    } else {
+        actualWordElement.className = "typed-incorrect";
     }
-    else {
-        actualWordElement.className = "typed-incorrect"
-    }
+    totalTypos += numOfTypos;
 }
