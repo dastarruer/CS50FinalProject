@@ -15,7 +15,7 @@ function verifyWordTyped(typedWord)
 {
     let actualWord = document.getElementById('untyped').innerHTML
 
-    if (typedWord === actualWord)
+    if (typedWord.trim() === actualWord)
     {
         console.log("correct!")
     } 
