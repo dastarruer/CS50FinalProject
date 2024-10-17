@@ -4,13 +4,13 @@
 
 {% block body %}
 <div>
-    {% for word in words %}
-        <div>
-            <h3 id="untyped">
-                {{ word }}
-            </h3>
-        </div>
-    {% endfor %} 
+    <div>
+        <h3>
+            {% for word in words %}
+                <span id="untyped">{{ word }}</span>
+            {% endfor %}
+        </h3>
+    </div> 
 </div>
 <div>
     <input id="inputfield">
