@@ -4,15 +4,13 @@
 
 {% block body %}
 <div>
-    <div>
-        <h3>
-            {% for word in words %}
-                <span id="untyped">{{ word }}</span>
-            {% endfor %}
-        </h3>
-    </div> 
+    <h3>
+        {% for word in words %}
+            <span id="untyped">{{ word }}</span>
+        {% endfor %}
+    </h3>
 </div>
 <div>
-    <input id="inputfield">
+    <input autofocus id="inputfield">
 </div>
 {% endblock %}

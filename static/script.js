@@ -13,13 +13,15 @@ input.addEventListener('keydown', (event) => {
 
 function verifyWordTyped(typedWord)
 {
-    let actualWord = document.getElementById('untyped').innerHTML
+    let actualWordTag = document.getElementById('untyped')
+    let actualWord = actualWordTag.innerHTML
 
     if (typedWord.trim() === actualWord)
     {
-        console.log("correct!")
+        actualWordTag.id = "typed-correct"
+        console
     } 
     else {
-        console.log("incorrect...")
+        actualWordTag.id = "typed-incorrect"
     }
 }
