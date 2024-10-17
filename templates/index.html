@@ -6,11 +6,11 @@
 <div>
     <h3>
         {% for word in words %}
-            <span id="untyped">{{ word }}</span>
+            <span class="untyped">{{ word }}</span>
         {% endfor %}
     </h3>
 </div>
 <div>
-    <input autofocus id="inputfield">
+    <input autocomplete="off" autocapitalize="off" id="inputfield">
 </div>
 {% endblock %}
