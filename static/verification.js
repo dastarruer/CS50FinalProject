@@ -5,23 +5,34 @@ export let verification = {
 
     getTypos: function () {
         this.actualWord = this.actualWordElement.innerHTML;
-        this.numOfTypos = 0;
+        let numOfTypos = 0;
 
-        const len = this.typedWord.length;
+        let len = null;
+
+        const actualWordLength = this.actualWord.length;
+        const typedWordLength = this.typedWord.length;
+
+        // If the actual word is longer, then count the untyped characters as typos
+        if (actualWordLength > typedWordLength) {
+            numOfTypos += actualWordLength - typedWordLength;
+            len = typedWordLength;
+        }
+        // If the typed word is longer, then count the extra characters as typos
+        else if (typedWordLength > actualWordLength) {
+            numOfTypos += typedWordLength - actualWordLength;
+            len = actualWordLength;
+        }
+
         for (let i = 0; i < len; i++) {
             const typedChar = this.typedWord[i];
             const actualChar = this.actualWord[i];
-            
-            // If actualChar is null, that means that the typedWord is longer than actualWord
-            if (actualChar === null) {
-                numOfTypos += typedWord.length - actualWord.length;
-                break;
+
+            if (typedChar !== actualChar) {
+                numOfTypos++;
             }
-            else if (typedChar !== actualChar) {
-                this.numOfTypos++;
-            } 
         }
-        return this.numOfTypos;
+        console.log(numOfTypos);
+        return numOfTypos;
     },
 
     verifyWordTyped: function (numOfTypos) {
@@ -31,4 +42,4 @@ export let verification = {
             this.actualWordElement.className = "typed-incorrect";
         }
     },
-}
+};

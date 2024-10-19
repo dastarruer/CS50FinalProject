@@ -5,9 +5,9 @@ const input = document.getElementById("inputfield");
 
 let isTyping = false;
 
-let totalTypos = 0;
+let totalNumOfTypos = 0;
 
-let numOfWords = document.getElementsByClassName("untyped").length;
+let totalNumOfCharsTyped = 0;
 
 // Used to trigger a timer when the user has started typing
 input.addEventListener("input", () => {
@@ -33,26 +33,32 @@ input.addEventListener("keydown", (event) => {
         verification.actualWordElement = actualWordElement;
         verification.typedWord = input.value.trim();
 
+        // Add one to the length of the typed wrod to include the space at the end
+        totalNumOfCharsTyped += verification.typedWord.length + 1;
+
         let typosMade = verification.getTypos();
 
-        // Add the typos made to the total number of typos
-        totalTypos += typosMade;
+        totalNumOfTypos += typosMade;
 
-        // Verify the word typed
         verification.verifyWordTyped(typosMade);
 
-        // Clear the input field
         if (input.value != "") {
             input.value = "";
         }
 
         // Check if there are no other words after the one the user has typed
-        // if (document.getElementsByClassName("untyped")[0] === null) {
-        //     getWPM()
-        // }
+        if (document.getElementsByClassName("untyped")[0] === undefined) {
+            timer.stopTimer();
+
+            // Show the user's words per minute on the page
+            document.getElementById("wpm").innerHTML = `${getWPM()}WPM`;
+        }
     }
 });
 
-// function getWPM() {
-//     return (numOfWords / 5 - totalTypos) / timer.elapsedTimeMinutes;
-// }
+function getWPM() {
+    let wpm =
+        (totalNumOfCharsTyped / 5 - totalNumOfTypos) / timer.elapsedTimeMinutes;
+    // Return wpm rounded to two digits
+    return Math.round(wpm * 100) / 100;
+}

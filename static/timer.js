@@ -8,8 +8,10 @@ export const timer = {
         this.startTime = new Date().getTime();
         this.timerInterval = setInterval(() => {
             // Rounds to two decimal points
+            let elapsedTime = (new Date().getTime() - this.startTime) / 1000;
             this.elapsedTimeMinutes =
-                Math.round(((new Date().getTime() - this.startTime) / 1000 / 60) * 100) / 100;
+                Math.round((elapsedTime / 60) * 100) / 100;
+
             document.getElementById("timer").innerHTML =
                 this.elapsedTimeMinutes;
         }, 1000);
