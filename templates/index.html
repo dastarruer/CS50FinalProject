@@ -3,6 +3,10 @@
 {% block title %}TypeSpeed{% endblock %}
 
 {% block body %}
+<div>
+    <h2 id="wpm"></h2>
+
+</div>
 <div id="words">
     {% for word in words %}
         <span class="untyped">{{ word }}</span>
@@ -10,8 +14,5 @@
 </div>
 <div id="input">
     <input autofocus autocomplete="off" autocapitalize="off" id="inputfield">
-</div>
-<div>
-    <h2 id="wpm"></h2>
 </div>
 {% endblock %}

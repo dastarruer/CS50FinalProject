@@ -62,7 +62,9 @@ input.addEventListener("keydown", (event) => {
             timer.stopTimer();
 
             // Show the user's words per minute on the page
-            document.getElementById("wpm").innerHTML = `${getWPM()}WPM`;
+            document.getElementById("wpm").innerHTML = `${getWPM()} WPM`;
+
+            input.disabled = true;
         }
         wordIsStarted = true;
     }
@@ -71,6 +73,8 @@ input.addEventListener("keydown", (event) => {
 function getWPM() {
     let wpm =
         (totalNumOfCharsTyped / 5 - totalNumOfTypos) / timer.elapsedTimeMinutes;
-    // Return wpm rounded to two digits
-    return Math.round(wpm * 100) / 100;
+    if (wpm < 0) {
+        wpm = 0;
+    }
+    return Math.round(wpm);
 }

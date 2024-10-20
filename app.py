@@ -16,6 +16,7 @@ def index():
     words = sample(words, numOfWords)
     words = [word.strip() for word in words]
 
+    # words = ["help", "me"]
     return render_template("index.html", words=words)
 
 if __name__ == '__main__':
