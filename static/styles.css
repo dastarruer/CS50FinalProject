@@ -10,6 +10,7 @@ body {
 
 .current {
     background-color: #9399b233;
+    color: #bac2de;
 }
 .typed-correct {
     color: #a6da95;
@@ -19,43 +20,59 @@ body {
 }
 
 #logo {
-    text-align: center;
+    font-family: "JetBrains Mono", monospace;
+    font-optical-sizing: auto;
+
+    font-weight: 700;
     font-size: 60px;
+    letter-spacing: 1rem;
+
     color: #cdd6f4;
+
+    text-align: center;
 }
 
 #words {
-    color: #bac2de;
-    font-size: 35px;
-
     grid-row-start: 1;
+
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 35px;
+    color: #9399b2;
 }
 
 #input {
     grid-row-start: 2;
 }
+
 #inputfield {
     caret-color: #f4dbd6;
 
-    background-color: #7f849c;
-    color: #bac2de;
+    background-color: #9399b2;
+    color: #6c7086;
 
     font-size: 30px;
 
-    width: 100%;
+    width: 90%;
     padding: 12px 20px;
 
     border-radius: 15px;
-    border: 2px #7f849c;
+    border: 2px #6c7086;
 
     outline: none;
 }
 
 #wpm {
+    grid-row-start: 3;
+
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
     font-size: 50px;
     color: #a6da95;
-
-    grid-row-start: 3;
 
     text-align: center;
 }
