@@ -13,7 +13,7 @@ export const timer = {
                 Math.round((elapsedTime / 60) * 100) / 100;
         }, 1000);
     },
-
+    
     stopTimer: function () {
         clearInterval(this.timerInterval);
     },
