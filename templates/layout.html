@@ -4,14 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="static/styles.css">
-
         <title>{% block title %}{% endblock %}</title>
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div class="grid-container">
+            {% block body %}{% endblock %}
+        </div>
     </body>
 </html>
-
 <!-- For future reference, module imports only work with the type="module" attribute -->
 <script type="module" src="./static/script.js"></script>
+<link rel="stylesheet" href="static/styles.css">

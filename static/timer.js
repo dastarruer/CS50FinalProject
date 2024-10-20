@@ -11,9 +11,6 @@ export const timer = {
             let elapsedTime = (new Date().getTime() - this.startTime) / 1000;
             this.elapsedTimeMinutes =
                 Math.round((elapsedTime / 60) * 100) / 100;
-
-            document.getElementById("timer").innerHTML =
-                this.elapsedTimeMinutes;
         }, 1000);
     },
 

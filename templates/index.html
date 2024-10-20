@@ -4,13 +4,12 @@
 
 {% block body %}
 <div id="words">
-        {% for word in words %}
-            <span class="untyped">{{ word }}</span>
-        {% endfor %}
+    {% for word in words %}
+        <span class="untyped">{{ word }}</span>
+    {% endfor %}
 </div>
-<div>
-    <input autofocus     autocomplete="off" autocapitalize="off" id="inputfield">
-    <p id="timer"></p>
+<div id="input">
+    <input autofocus autocomplete="off" autocapitalize="off" id="inputfield">
 </div>
 <div>
     <h2 id="wpm"></h2>

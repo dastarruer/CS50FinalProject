@@ -3,6 +3,7 @@ export let verification = {
     actualWordElement: null,
     typedWord: null,
 
+    // TODO: If actualWordElement is null, fix that
     getTypos: function () {
         this.actualWord = this.actualWordElement.innerHTML;
         let numOfTypos = 0;

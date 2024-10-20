@@ -1,10 +1,55 @@
-.current {
-    background-color: #94e2d5
+body {
+    background-color: #24273a;
 }
 
+.grid-container {
+    display: grid;
+    padding: 100px;
+    row-gap: 50px;
+}
+
+.current {
+    background-color: #9399b233;
+}
 .typed-correct {
-    color: green
+    color: #a6da95;
 }
 .typed-incorrect {
-    color: red;
+    color: #f38ba8;
+}
+
+#words {
+    color: #cdd6f4;
+    font-size: 40px;
+
+    grid-row-start: 1;
+}
+
+#input {
+    grid-row-start: 2;
+}
+#inputfield {
+    caret-color: #f4dbd6;
+
+    background-color: #7f849c;
+    color: #bac2de;
+
+    font-size: 30px;
+
+    width: 100%;
+    padding: 12px 20px;
+
+    border-radius: 15px;
+    border: 2px #7f849c;
+
+    outline: none;
+}
+
+#wpm {
+    font-size: 50px;
+    color: #a6da95;
+
+    grid-row-start: 3;
+
+    text-align: center;
 }
