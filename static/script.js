@@ -12,6 +12,8 @@ let totalNumOfCharsTyped = 0;
 
 // Used to trigger a timer when the user has started typing
 input.addEventListener("input", () => {
+    const currentWordElement = document.getElementsByClassName("untyped")[0];
+
     // If the user has started the test
     if (!isTyping) {
         // Start the timer
@@ -19,11 +21,8 @@ input.addEventListener("input", () => {
         isTyping = true;
     }
 
-    const currentWordElement = document.getElementsByClassName("untyped")[0];
-
     // If the user has just started a word
     if (wordIsStarted && currentWordElement !== undefined) {
-        
         currentWordElement.className = "current";
 
         wordIsStarted = false;
@@ -32,7 +31,6 @@ input.addEventListener("input", () => {
 
 // Used to process each word that the user types by checking for spacebar presses
 input.addEventListener("keydown", (event) => {
-
     // Check if the user presses space, at which point we assume they have typed a word
     if (event.key == " ") {
         const actualWordElement = document.getElementsByClassName("current")[0];

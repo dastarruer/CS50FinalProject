@@ -3,7 +3,6 @@ export let verification = {
     actualWordElement: null,
     typedWord: null,
 
-    // TODO: When typed word has one typo at the end, it does not return any typos
     getTypos: function () {
         this.actualWord = this.actualWordElement.innerHTML;
         let numOfTypos = 0;
@@ -22,6 +21,10 @@ export let verification = {
         else if (typedWordLength > actualWordLength) {
             numOfTypos += typedWordLength - actualWordLength;
             len = actualWordLength;
+        } 
+        // Since both the typed and actual word are the same length, it doesn't matter which one len is set to
+        else {
+            len = typedWordLength
         }
 
         for (let i = 0; i < len; i++) {
