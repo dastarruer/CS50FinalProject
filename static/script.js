@@ -4,6 +4,7 @@ import { verification } from "./verification.js";
 const input = document.getElementById("inputfield");
 
 let isTyping = false;
+let wordIsStarted = true;
 
 let totalNumOfTypos = 0;
 
@@ -11,24 +12,34 @@ let totalNumOfCharsTyped = 0;
 
 // Used to trigger a timer when the user has started typing
 input.addEventListener("input", () => {
-    // If the user has not started typing
+    // If the user has started the test
     if (!isTyping) {
         // Start the timer
         timer.startTimer();
         isTyping = true;
     }
+
+    // If the user has just started a word
+    if (wordIsStarted) {
+        const currentWordElement = document.getElementsByClassName("untyped")[0];
+        currentWordElement.className = "current";
+
+        wordIsStarted = false;
+    }
 });
 
 // Used to process each word that the user types by checking for spacebar presses
 input.addEventListener("keydown", (event) => {
+
     // Check if the user presses space, at which point we assume they have typed a word
     if (event.key == " ") {
-        const actualWordElement = document.getElementsByClassName("untyped")[0];
+        const actualWordElement = document.getElementsByClassName("current")[0];
 
         // If actualWordElement is null, then there are no more words to type
         if (actualWordElement === null) {
             timer.stopTimer();
         }
+
         // Set the values of the verification object
         verification.actualWordElement = actualWordElement;
         verification.typedWord = input.value.trim();
@@ -53,6 +64,7 @@ input.addEventListener("keydown", (event) => {
             // Show the user's words per minute on the page
             document.getElementById("wpm").innerHTML = `${getWPM()}WPM`;
         }
+        wordIsStarted = true;
     }
 });
 

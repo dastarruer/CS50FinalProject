@@ -3,6 +3,7 @@ export let verification = {
     actualWordElement: null,
     typedWord: null,
 
+    // TODO: When typed word has one typo at the end, it does not return any typos
     getTypos: function () {
         this.actualWord = this.actualWordElement.innerHTML;
         let numOfTypos = 0;
@@ -31,7 +32,6 @@ export let verification = {
                 numOfTypos++;
             }
         }
-        console.log(numOfTypos);
         return numOfTypos;
     },
 
