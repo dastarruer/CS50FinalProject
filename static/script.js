@@ -19,9 +19,11 @@ input.addEventListener("input", () => {
         isTyping = true;
     }
 
+    const currentWordElement = document.getElementsByClassName("untyped")[0];
+
     // If the user has just started a word
-    if (wordIsStarted) {
-        const currentWordElement = document.getElementsByClassName("untyped")[0];
+    if (wordIsStarted && currentWordElement !== undefined) {
+        
         currentWordElement.className = "current";
 
         wordIsStarted = false;
