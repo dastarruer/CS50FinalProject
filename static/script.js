@@ -1,14 +1,14 @@
 import { timer } from "./timer.js";
 import { verification } from "./verification.js";
 
-const input = document.getElementById("inputfield");
-
 let isTyping = false;
 let wordIsStarted = true;
 
 let totalNumOfTypos = 0;
 
 let totalNumOfCharsTyped = 0;
+
+const input = document.getElementById("inputfield");
 
 // Used to trigger a timer when the user has started typing
 input.addEventListener("input", () => {
@@ -39,36 +39,46 @@ input.addEventListener("keydown", (event) => {
         if (actualWordElement === null) {
             timer.stopTimer();
         }
-
-        // Set the values of the verification object
-        verification.actualWordElement = actualWordElement;
-        verification.typedWord = input.value.trim();
-
-        // Add one to the length of the typed wrod to include the space at the end
-        totalNumOfCharsTyped += verification.typedWord.length + 1;
-
-        let typosMade = verification.getTypos();
-
-        totalNumOfTypos += typosMade;
-
-        verification.verifyWordTyped(typosMade);
-
-        if (input.value != "") {
-            input.value = "";
-        }
+        processWord(actualWordElement, input);
+        resetInputField();
 
         // Check if there are no other words after the one the user has typed
         if (document.getElementsByClassName("untyped")[0] === undefined) {
-            timer.stopTimer();
-
-            // Show the user's words per minute on the page
-            document.getElementById("wpm").innerHTML = `${getWPM()} WPM`;
-
-            input.disabled = true;
+            stopTest();
         }
         wordIsStarted = true;
     }
 });
+
+function processWord(actualWordElement) {
+    // Set the values of the verification object
+    verification.actualWordElement = actualWordElement;
+    verification.typedWord = input.value.trim();
+
+    // Add one to the length of the typed word to include the space at the end
+    totalNumOfCharsTyped += verification.typedWord.length + 1;
+
+    let typosMade = verification.getTypos();
+
+    totalNumOfTypos += typosMade;
+
+    verification.verifyWordTyped(typosMade);
+}
+
+function resetInputField() {
+    if (input.value != "") {
+        input.value = "";
+    }
+}
+
+function stopTest() {
+    timer.stopTimer();
+
+    // Show the user's words per minute on the page
+    document.getElementById("wpm").innerHTML = `${getWPM()} WPM`;
+
+    input.disabled = true;
+}
 
 function getWPM() {
     let wpm =
