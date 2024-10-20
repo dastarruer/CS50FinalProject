@@ -10,6 +10,13 @@ let totalNumOfCharsTyped = 0;
 
 const input = document.getElementById("inputfield");
 
+const reset = document.getElementById("restart");
+
+// Reload the page when the restart button has been pressed
+reset.addEventListener("click", (event) => {
+    window.location.reload();
+});
+
 // Used to trigger a timer when the user has started typing
 input.addEventListener("input", () => {
     const currentWordElement = document.getElementsByClassName("untyped")[0];
@@ -50,6 +57,7 @@ input.addEventListener("keydown", (event) => {
     }
 });
 
+
 function processWord(actualWordElement) {
     // Set the values of the verification object
     verification.actualWordElement = actualWordElement;
@@ -75,7 +83,7 @@ function stopTest() {
     timer.stopTimer();
 
     // Show the user's words per minute on the page
-    document.getElementById("wpm").innerHTML = `${getWPM()} WPM`;
+    document.getElementById("wpm").innerHTML = `${getWPM()} WPM <br /> Press restart`;
 
     input.disabled = true;
 }

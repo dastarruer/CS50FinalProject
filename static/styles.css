@@ -29,7 +29,7 @@ body {
     font-size: 60px;
     letter-spacing: 1rem;
 
-    color: #cdd6f4;
+    color: #cba6f7;
 
     text-align: center;
 }
@@ -46,6 +46,19 @@ body {
     color: #9399b2;
 }
 
+#wpm {
+    grid-row-start: 1;
+
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 50px;
+    color: #a6da95;
+
+    text-align: center;
+}
+
 #input {
     grid-row-start: 3;
 }
@@ -54,7 +67,7 @@ body {
     caret-color: #f4dbd6;
 
     background-color: #9399b2;
-    color: #6c7086;
+    color: #45475a;
 
     font-size: 30px;
 
@@ -67,15 +80,30 @@ body {
     outline: none;
 }
 
-#wpm {
-    grid-row-start: 1;
+#inputfield:hover, #inputfield:focus {
+    background-color: #7f849c;
+}
+
+#restart {
+    grid-row-start: 4;
 
     font-family: "Roboto Mono", monospace;
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
-    font-size: 50px;
-    color: #a6da95;
+    font-size: 35px;
+    color: #313244;
 
-    text-align: center;
+    background-color: #585b70;
+    border: #585b70;
+    border-radius: 15px;
+
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 45px;
+    padding-right: 45px;
+}
+
+#restart:hover {
+    background-color: #a6da95;
 }
