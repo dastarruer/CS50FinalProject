@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <!-- For future reference, module imports only work with the type="module" attribute -->
+        <script type="module" src="./static/script.js"></script>
+        <link rel="stylesheet" href="static/styles.css">
         <title>{% block title %}{% endblock %}</title>
     </head>
     <body>
@@ -13,6 +15,3 @@
         </div>
     </body>
 </html>
-<!-- For future reference, module imports only work with the type="module" attribute -->
-<script type="module" src="./static/script.js"></script>
-<link rel="stylesheet" href="static/styles.css">

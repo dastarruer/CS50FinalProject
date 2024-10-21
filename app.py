@@ -14,7 +14,7 @@ def index():
         words = file.readlines()
 
     words = sample(words, numOfWords)
-    words = [word.strip() for word in words]
+    words = set([word.strip() for word in words])
 
     # words = ["help", "me"]
     return render_template("index.html", words=words)

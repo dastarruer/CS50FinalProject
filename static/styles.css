@@ -104,6 +104,7 @@ body {
     padding-right: 45px;
 }
 
-#restart:hover {
+#restart:hover, #restart:focus {
     background-color: #a6da95;
+    outline: none;
 }
