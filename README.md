@@ -63,7 +63,7 @@ actualWordElement: null,
 typedWord: null,
 ```  
 `actualWordElement` is where the actual word that the user was supposed to type is stored. Or rather, the `<span>` tag storing the actual word. This is different from `typedWord`, which stores the word that the user typed. The reason `actualWordElement` is stored as an element rather than a string is to apply CSS to it if the word was typed correctly or incorrectly.  
-#### `getTypos`
+#### `getTypos()`
 This function is used to get the number of typos the user has made. This checks `typedWord` against `actualWord`. The first condition it checks for is:
 ```
 if (actualWordLength > typedWordLength) {
@@ -80,3 +80,32 @@ The same can be seen in the next condiitonal:
 } 
 ```
 Here, if the user types more characters than in the actual word, those extraneous characters are counted as typos as well.  
+The last `else` statement triggers if both the typed and actual word are the same length, which sets the `len` variable to `typedWordLength` (though it does not matter which string's length is used):
+```
+else {
+    len = typedWordLength
+}
+```
+The last component of the `getTypos` function is a for loop that loops through each character in each word:
+```
+for (let i = 0; i < len; i++) {
+    const typedChar = this.typedWord[i];
+    const actualChar = this.actualWord[i];
+
+    if (typedChar !== actualChar) {
+        numOfTypos++;
+    }
+}
+return numOfTypos;
+```
+This loop simply comapres each character against each other, and if they are not the same, add one to the number of typos.  
+#### `verifyWordTyped()`
+This function changes the CSS of the `actualWordElement` depending on whether the user types the word correct or incorrectly.
+```
+if (numOfTypos === 0) {
+    this.actualWordElement.className = "typed-correct";
+} else {
+    this.actualWordElement.className = "typed-incorrect";
+}
+``` 
+The function just checks the number of typos made, and changes the class name accordingly. These class names have their own CSS, which can be found in `static/styles.css`.
