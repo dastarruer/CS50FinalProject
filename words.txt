@@ -96,3 +96,5 @@ walk
 straw
 herb
 clothes
+share
+there
