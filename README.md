@@ -54,7 +54,7 @@ The next element is the input field that the user will use to type their words i
 ```
 The last element is the restart button, which -- when pressed -- will simply reload the page, which will give the user another set of words to type. This can be triggered at any time. I chose to let them do this, as if they were typing unusually slow during a test, they would be able to get a new set of words. 
 ### `static/verification.js`
-This file provides an object whose function is to verify the words that the user types.  
+This file provides an object whose purpose is to verify the words that the user types.  
 It has two variables of note: `actualWordElement` and `typedWord`. `actualWord` refers to the word that the user was supposed to type, while `typedWord` refers to the word that the user actually typed. `actualWordElement` just stores the `HTML` tag of `actualWord`, which is used to change its look depending on whether the user typed the word incorrectly or not. 
 The `verification` object also has two function: `getTypos()`, which is used to get the amount of typos the user makes, and `verifyWordTyped()`, which is used to change the class of the current word, which will change its CSS.  
 #### `getTypos()`
@@ -99,3 +99,30 @@ if (numOfTypos === 0) {
 }
 ```
 In future iterations, it would probably be best to store `numofTypos` as a variable inside of the object, instead of passing it in as a parameter. This would tighten its scope, and clean up the declaration of the function.
+### `static/timer.js`
+This file includes an object whose purpose is to time the oeriod the user spends completing their test. This is taken into account when calculating the WPM.  
+The only variable of real note is `elapsedTimeMinutes`, which is the amount of time (in minutes) the user takes to complete their test.  
+#### `startTimer()`
+This function is used to start a timer.  
+It first gets the current time:
+```
+this.startTime = new Date().getTime();
+```
+The function then starts an interval that is set to go off every 1000 milliseconds:
+```
+this.timerInterval = setInterval(() => {
+    ...
+}, 1000);
+```
+This interval updates the elapsed time by subtracting the current time with `startTime`,  divides the result by 60, and rounds it to two decimal digits:
+```
+let elapsedTime = (new Date().getTime() - this.startTime) / 1000;
+// Rounds to two decimal points
+this.elapsedTimeMinutes =
+    Math.round((elapsedTime / 60) * 100) / 100;
+```
+#### `stopTimer()`
+This function stops the timer, by just clearing the interval set in `startTimer()`:
+```
+clearInterval(this.timerInterval);
+```

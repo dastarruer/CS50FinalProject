@@ -7,8 +7,8 @@ export const timer = {
     startTimer: function () {
         this.startTime = new Date().getTime();
         this.timerInterval = setInterval(() => {
-            // Rounds to two decimal points
             let elapsedTime = (new Date().getTime() - this.startTime) / 1000;
+            // Rounds to two decimal points
             this.elapsedTimeMinutes =
                 Math.round((elapsedTime / 60) * 100) / 100;
         }, 1000);
