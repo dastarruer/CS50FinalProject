@@ -12,13 +12,15 @@ This file is used as the backend of the project. It is used to generate the word
 with open("words.txt", 'r') as file:
     words = file.readlines()
 ```
-and are then randomly sampled:
+and are then randomly sampled and stripped of their whitespace:
 ```
 numOfWords = 30
 ...
 words = sample(words, numOfWords)
+words = [word.strip() for word in words]
 ```
-and are then sent off to `index.html` to display for the user:
+I was also debating the idea of removing all duplicates in `words`, but I decided that it would be unnecessary, as the user probably wouldn't care if they were given multiple of the same word.  
+`words` is then sent off to `index.html` to display for the user:
 ```
 return render_template("index.html", words=words)
 ```
