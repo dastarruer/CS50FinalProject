@@ -201,3 +201,71 @@ and then `wordStarted` is set to `true`:
 ```
 wordStarted = true;
 ```
+#### `processWord(actualWordElement)`
+This function processes the word typed by the user.  
+Firstly, the function initializes the `actualWordElement` and `typedWord` variables in the `verification` object:
+```
+verification.actualWordElement = actualWordElement;
+verification.typedWord = input.value.trim();
+```
+Next, the function adds to `totalNumOfCharsTyped`:
+```
+totalNumOfCharsTyped += verification.typedWord.length + 1;
+```
+The extra `1` that is added to `typedWord.length` is meant to include the space typed at the end of every word.  
+Next, the function gets the number of typos the user made:
+```
+let typosMade = verification.getTypos();
+``` 
+and then adds it to `totalNumOfTypos`:
+```
+totalNumOfTypos += typosMade;
+```
+Then, the `verifyWordTyped(numOfTypos)` function is run:
+```
+verification.verifyWordTyped(typosMade);
+```
+#### `resetInputField()`
+This function resets the input field.  
+The function checks if there is a value inside of the input field:
+```
+if (input.value != "") {
+    ...
+}
+```
+If this is true, it sets input's value to an empty string, which allows the user to type a new word:
+```
+input.value = "";
+```
+#### `stopTest()`
+This function is used to stop a test.  
+Firstly, the function stops the timer:
+```
+timer.stopTimer();
+```
+Then, the WPM of the user is displayed:  
+```
+document.getElementById("wpm").innerHTML = `${getWPM()} WPM <br /> Press restart`;
+```
+Finally, the input field is set to disabled, which means the user cannot type into it anymore:
+```
+input.disabled = true;
+```
+#### `getWPM()`
+This function is used to calculate the user's WPM.  
+The formula for WPM is: <img src="https://www.speedtypingonline.com/images/Net_WPM.png">
+The `wpm` variable uses this formula: 
+```
+let wpm =
+    (totalNumOfCharsTyped / 5 - totalNumOfTypos) / timer.elapsedTimeMinutes;
+```
+Sometimes, the gross WPM can turn out to be negative. If this happens, the WPM is simply set to zero:
+```
+if (wpm < 0) {
+    wpm = 0;
+}
+```
+The function then returns `wpm` rounded to the nearest integer:
+```
+return Math.round(wpm);
+```
