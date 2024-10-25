@@ -1,5 +1,6 @@
 # TypeSpeed
 ## Video Demo:
+A video demonstration of the site: https://www.youtube.com/watch?v=zo2WMtJzTBM
 ## Description
 TypeSpeed is a typing test. It gives the user a random set of words under 3 syllables to type. Once the user has finished typing them, they recieve their WPM, at which point they are promtped to try again.   
 This project utilizes `HTML`, `CSS`, `JavaScript`, and `Flask`. 
