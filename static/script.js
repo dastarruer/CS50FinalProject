@@ -31,7 +31,6 @@ input.addEventListener("input", () => {
     // If the user has just started a word
     if (wordStarted && currentWordElement !== undefined) {
         currentWordElement.className = "current";
-
         wordStarted = false;
     }
 });

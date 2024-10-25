@@ -134,4 +134,40 @@ clearInterval(this.timerInterval);
 `totalNumOfCharsTyped` tracks the number of characters that the user has typed. This is taken into consideration when calculating the WPM.  
 `input` stores the `HTML` tag of the input field. This allows us to add event listeners that trigger when a key has been pressed.  
 `restart` stores the `HTML` tag of the restart button, which allows us to add event listeners for when the user clicks the button.  
- 
+#### `restart.addEventListener("click"...)`
+This event listener triggers when the user clicks the restart button.  
+When the event listener triggers, the webpage will reload, which will reset the test, and give the user a new one.
+#### ` input.addEventListener("input"...)`
+This event listener triggers when the user starts typing into the input field. This is not to be confused with `input.addEventListener("keydown"...)`, which triggers every time a key is pressed inside the input field.  
+The `currentWordElement` gets the first element that is untyped: 
+```
+const currentWordElement = document.getElementsByClassName("untyped")[0];
+```
+If the listener triggers, this is because the input field has been cleared. This implies that a new word has started, which allows us to run a few conditionals:  
+```
+if (!testStarted) {
+    ...
+}
+```
+This first one checks if the user has not started the test yet. If this is the case, it will start the timer:
+```
+timer.startTimer();
+```
+and set `testStarted` to true:
+```
+testStarted = true;
+```
+The next conditional checked is:
+```
+if (wordStarted && currentWordElement !== undefined) {
+    ...
+}
+```
+If this conditional evaluates to true, it means that the user has started a new word. This changes `currentWordElement`'s class to `'current'`, which will change its CSS:
+```
+currentWordElement.className = "current";
+```
+It then changes `wordStarted` to false:
+```
+wordStarted = false;
+```
