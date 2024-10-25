@@ -41,10 +41,6 @@ input.addEventListener("keydown", (event) => {
     if (event.key == " ") {
         const actualWordElement = document.getElementsByClassName("current")[0];
 
-        // If actualWordElement is null, then there are no more words to type
-        if (actualWordElement === null) {
-            timer.stopTimer();
-        }
         processWord(actualWordElement, input);
         resetInputField();
 

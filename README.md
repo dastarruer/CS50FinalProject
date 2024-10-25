@@ -171,3 +171,33 @@ It then changes `wordStarted` to false:
 ```
 wordStarted = false;
 ```
+#### `input.addEventListener("keydown"...)`
+This event listener triggers when the user presses any key while in the input field.  
+The first thing that the listener checks is if the key pressed is a space. This implies that the user has finished typing a word, and is ready to move on to the next one:  
+```
+if (event.key == " ") {
+    ...
+}
+```
+`actualWordElement` is used to store the `HTML` tag with the 'current' class:
+```
+const actualWordElement = document.getElementsByClassName("current")[0];
+```
+Next, the word that the user types is processed:  
+```
+processWord(actualWordElement, input);
+```
+and then the input field is reset:
+```
+resetInputField();
+```
+Then, if there are no more elements that have the class `'untypyed'`, then we can assume that the test is over:  
+```
+if (document.getElementsByClassName("untyped")[0] === undefined) {
+    stopTest();
+}
+```
+and then `wordStarted` is set to `true`:
+```
+wordStarted = true;
+```
