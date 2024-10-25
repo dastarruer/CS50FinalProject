@@ -126,3 +126,12 @@ This function stops the timer, by just clearing the interval set in `startTimer(
 ```
 clearInterval(this.timerInterval);
 ```
+### `static/script.js`
+#### Variables
+`testStarted` is used to track if the test has been started by the user, which is used to start the timer.  
+`wordStarted` is used to track if a new word has been started by the user. This means if they finished typing a word, and have moved on to the next one, `wordStarted` would be true. This is used to track which word is the current one, which allows us to change its CSS.   
+`totalNumOfTypos` tracks the number of typos the user has made throughout the test. This is taken into consideration when calculating the WPM. 
+`totalNumOfCharsTyped` tracks the number of characters that the user has typed. This is taken into consideration when calculating the WPM.  
+`input` stores the `HTML` tag of the input field. This allows us to add event listeners that trigger when a key has been pressed.  
+`restart` stores the `HTML` tag of the restart button, which allows us to add event listeners for when the user clicks the button.  
+ 

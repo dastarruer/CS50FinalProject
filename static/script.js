@@ -1,8 +1,8 @@
 import { timer } from "./timer.js";
 import { verification } from "./verification.js";
 
-let isTyping = false;
-let wordIsStarted = true;
+let testStarted = false;
+let wordStarted = true;
 
 let totalNumOfTypos = 0;
 
@@ -10,10 +10,10 @@ let totalNumOfCharsTyped = 0;
 
 const input = document.getElementById("inputfield");
 
-const reset = document.getElementById("restart");
+const restart = document.getElementById("restart");
 
 // Reload the page when the restart button has been pressed
-reset.addEventListener("click", (event) => {
+restart.addEventListener("click", (event) => {
     window.location.reload();
 });
 
@@ -22,17 +22,17 @@ input.addEventListener("input", () => {
     const currentWordElement = document.getElementsByClassName("untyped")[0];
 
     // If the user has started the test
-    if (!isTyping) {
+    if (!testStarted) {
         // Start the timer
         timer.startTimer();
-        isTyping = true;
+        testStarted = true;
     }
 
     // If the user has just started a word
-    if (wordIsStarted && currentWordElement !== undefined) {
+    if (wordStarted && currentWordElement !== undefined) {
         currentWordElement.className = "current";
 
-        wordIsStarted = false;
+        wordStarted = false;
     }
 });
 
@@ -53,7 +53,7 @@ input.addEventListener("keydown", (event) => {
         if (document.getElementsByClassName("untyped")[0] === undefined) {
             stopTest();
         }
-        wordIsStarted = true;
+        wordStarted = true;
     }
 });
 
