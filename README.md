@@ -56,7 +56,7 @@ The last element is the restart button, which -- when pressed -- will simply rel
 ### `static/verification.js`
 This file provides an object whose purpose is to verify the words that the user types.  
 It has two variables of note: `actualWordElement` and `typedWord`. `actualWord` refers to the word that the user was supposed to type, while `typedWord` refers to the word that the user actually typed. `actualWordElement` just stores the `HTML` tag of `actualWord`, which is used to change its look depending on whether the user typed the word incorrectly or not. 
-The `verification` object also has two function: `getTypos()`, which is used to get the amount of typos the user makes, and `verifyWordTyped()`, which is used to change the class of the current word, which will change its CSS.  
+The `verification` object also has two function: [`getTypos()`](#getTypos()), which is used to get the amount of typos the user makes, and [`verifyWordTyped()`](#verifyWordTyped()), which is used to change the class of the current word, which will change its CSS.  
 #### `getTypos()`
 This function gets the number of typos the user has made. It first checks for a few things:
 ```
@@ -122,7 +122,7 @@ this.elapsedTimeMinutes =
     Math.round((elapsedTime / 60) * 100) / 100;
 ```
 #### `stopTimer()`
-This function stops the timer, by just clearing the interval set in `startTimer()`:
+This function stops the timer, by just clearing the interval set in [`startTimer()`](#startTimer())`:
 ```
 clearInterval(this.timerInterval);
 ```
